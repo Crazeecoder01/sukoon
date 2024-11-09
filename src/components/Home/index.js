@@ -1,10 +1,10 @@
 import React from 'react'
-import Navbar from '../lib/Navbar'
+import OpenRoomSelector from '../chatRoom/OpenRoomSelector'
 
 const Home = () => {
   return (
     <div>
-    <Navbar/>
+      <OpenRoomSelector/>
     </div>
   )
 }
