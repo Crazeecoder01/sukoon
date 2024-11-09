@@ -1,7 +1,6 @@
 // src/chatRoom/ChatRoom.js
 import React, { useState, useEffect } from 'react';
-import { collection, query, where, orderBy, onSnapshot, addDoc, serverTimestamp } from 'firebase/firestore';
-import { db } from '../../firebaseConfig';
+import ChatService from './ChatService';
 import Message from './Message';
 import ChatInput from './ChatInput';
 import { Container, Typography, Paper, List } from '@mui/material';
@@ -11,25 +10,13 @@ const ChatRoom = ({ userId, displayName, room }) => {
 
   useEffect(() => {
     if (room) {
-      const messagesRef = collection(db, 'chatRooms');
-      const q = query(messagesRef, where('room', '==', room), orderBy('timestamp'));
-      const unsubscribe = onSnapshot(q, (snapshot) => {
-        setMessages(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
-      });
+      const unsubscribe = ChatService.subscribeToMessages(room, setMessages);
       return () => unsubscribe();
     }
   }, [room]);
 
-  const sendMessage = async (text) => {
-    if (userId) {
-      await addDoc(collection(db, 'chatRooms'), {
-        text,
-        uid: userId,
-        displayName: displayName || 'Anonymous',
-        room,
-        timestamp: serverTimestamp(),
-      });
-    }
+  const sendMessage = (text) => {
+    ChatService.sendMessage(room, { text, uid: userId, displayName });
   };
 
   return (

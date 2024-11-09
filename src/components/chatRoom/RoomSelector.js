@@ -7,7 +7,7 @@ const RoomSelector = ({ userId, displayName }) => {
   const [open, setOpen] = useState(false);
   const [selectedRoom, setSelectedRoom] = useState(null);
 
-  const rooms = ['Room 1', 'Room 2', 'Room 3', 'Room 4']; // Replace with dynamic fetching if needed
+  const rooms = ['Room 1', 'Room 2', 'Room 3', 'Room 4'];
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
