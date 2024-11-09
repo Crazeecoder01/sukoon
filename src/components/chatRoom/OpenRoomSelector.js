@@ -2,10 +2,14 @@
 import React, { useState } from 'react';
 import { Button } from '@mui/material';
 import RoomSelector from './RoomSelector';
+import { useAuth0 } from '@auth0/auth0-react';
 
-const OpenRoomSelector = ({ userId, displayName }) => {
+const OpenRoomSelector = () => {
   const [showRoomSelector, setShowRoomSelector] = useState(false);
+  const {user} = useAuth0();
 
+  console.log("USERCHECK", user);
+  const uid = user?.nickname;
   const handleOpenRoomSelector = () => {
     setShowRoomSelector(true);
   };
@@ -17,7 +21,7 @@ const OpenRoomSelector = ({ userId, displayName }) => {
           Open Room Selector
         </Button>
       ) : (
-        <RoomSelector userId={userId} displayName={displayName} />
+        <RoomSelector userId={uid} displayName={user?.name} />
       )}
     </div>
   );

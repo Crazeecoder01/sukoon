@@ -6,7 +6,7 @@ import LoginButton from "../components/auth/login";
 const Navbar = () => {
   const { isAuthenticated } = useAuth0();
   return (
-    <header className="bg-gray-800 p-4 text-white flex justify-between">
+    <header className="bg-gray-800 p-4 text-white flex justify-between  items-center">
       <h1 className="text-xl">Project Name</h1>
       <div className="flex items-center space-x-4">
         {isAuthenticated ? (

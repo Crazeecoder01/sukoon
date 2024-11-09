@@ -1,8 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import App from "./App";
-import Dashboard from './components/dashboard';
 import Home from './components/Home';
+import Dashboard from './components/dashboard';
 const CompRoutes = () => {
   return (
     <Router>
