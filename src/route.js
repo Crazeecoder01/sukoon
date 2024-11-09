@@ -8,7 +8,6 @@ const CompRoutes = () => {
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/dashboard" element={<Dashboard/>} />
-        {/* <Route path="/chat" element={<ChatGroups/>} /> */}
 
       </Routes>
     </Router>

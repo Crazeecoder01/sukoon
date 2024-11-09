@@ -3,6 +3,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 import LoginButton from "../components/auth/login";
 import LogoutButton from "../components/auth/logout";
 import { Link } from "react-router-dom";
+import LogoutButton from "../components/auth/logout";
+import LoginButton from "../components/auth/login";
 const Navbar = () => {
   const { isAuthenticated } = useAuth0();
   return (
@@ -17,7 +19,7 @@ const Navbar = () => {
             <LogoutButton />
           </>
         ) : (
-          <LoginButton />
+          <LoginButton/>
         )}
       </div>
     </header>
